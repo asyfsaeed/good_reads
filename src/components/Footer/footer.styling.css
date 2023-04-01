@@ -1,0 +1,24 @@
+.container
+{
+    display: flex;
+    height: 300px;
+    width: 96%;
+    background-color: #F4F1EA ;
+    justify-content: space-around;
+    padding: 0 2%;
+}
+.Box
+{
+    height: 280px;
+}
+
+.BoxText 
+{ 
+    font-size: 18px; 
+    color: #767676; 
+    font-weight: bold; 
+}
+
+.socialLinks {
+    padding-right: 5px;
+}

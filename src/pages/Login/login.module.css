@@ -1,0 +1,71 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.navBar
+{
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    height: 80px;
+    width: 100%;
+    background-color: #F4F1EA;
+}
+.logo
+{
+    margin-top: 15px;
+    margin-left: 250px;
+    float: left;
+}
+
+.banner
+{
+    height: 370px;
+    width: 100%;
+    background-color: #32362D;
+    background-image: url("../../assets/HomepageMasthead_Desktop.png");
+    padding: 0;
+    position: static;
+    border: 0;
+    background-position: center 75px;
+    background-repeat: no-repeat;
+    background-size: auto 295px;
+    min-width: 970px;
+}
+
+.signInContainer
+{
+    margin-left: 70%;
+    padding: 0px;
+    height: 360px;
+    margin-top: -30px;
+    width: 300px;
+    float: left;
+    background-color: #F4F1EA ;
+    border-radius: 8px;
+}
+.signInContainer input
+{
+    padding: 12px;
+    width: 250px;
+    margin-left: 10px;
+    background-color: white;
+    font-size: 13px;
+    border: none;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+.signInContainer>:nth-child(9){
+    margin-top: 5px;
+    margin-left: 10px;
+    opacity: 0.5;
+    color: white;
+    font-size: 13px;
+    color:#32362D ;
+}
+.signInContainer>:nth-child(1)
+{
+    color: white;
+    margin-top: 80px;
+    margin-left: 10px;
+    color:#32362D ;
+}

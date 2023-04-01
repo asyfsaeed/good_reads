@@ -1,0 +1,60 @@
+.cont{
+    width: 75%;
+    margin: 0 auto;
+}
+
+.cont h2, p{
+    font-family: 'Lato', sans-serif;
+    color: #333333;
+}
+
+.cont__flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cont__filter{
+    margin: 0 1em;
+}
+
+.cont__filter button{
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color: #18645E;
+    cursor: pointer;
+}
+
+.cont__filter button:hover{
+    text-decoration: underline;
+}
+
+.cont__main{
+    width:60%;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin: 0 1em 0 3em;
+}
+
+.filter_btn{
+    background-color: white;
+    border: none;
+}
+
+.horizontal_rule{
+    margin: 1em 0;
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cont__sort > div{
+    margin:5px 0; 
+}
+
+.cont__sort span{
+    margin:5px
+}
