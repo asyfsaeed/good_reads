@@ -13,8 +13,6 @@ const checkAuth = (authScope) => {
   } 
 }
 
-const db = require('../../models');
-
 const bookResolvers = {
   Query: {
     books: async (root, args, { authScope, models: { Book } }) => {
@@ -26,34 +24,12 @@ const bookResolvers = {
       return Book.findByPk(id)},
   },
   Mutation: {
-    addToLibrary: async (root, { id, collection }, {authScope, models: { Book } }) => {
-      try {
-        await checkAuth(authScope);
-        const book = await Book.findByPk(id);
-
-        if (!book) {
-            throw new GraphQLError('Book not found', {
-                extensions: {
-                  code: 'Not Found',
-                  http: { status: 404 },
-                },
-            });
-        }
-
-        await db.Library.insert({ BookId: id, UserId: authScope.user.id, collection });
-
-        return book;
-
-      } catch (error) {
-        throw new Error(error.errors[0].message);
-      }
-    },
     addBook: async (root, { title, author, date, cover_image }, {authScope, models: { Book } }) => {
       await checkAuth(authScope);
 
       const book = await Book.findOne({ where: { title }});
 
-      if (!book) {
+      if (book) {
           throw new GraphQLError('Book with title already exists', {
               extensions: {
                 code: 'Not Found',
@@ -61,9 +37,24 @@ const bookResolvers = {
               },
           });
       }
-    },
-    updateBook: async (root, { id, title, author, date, cover_image, rating}, {authScope, models: { Book } }) => {
 
+      return await Book.create({ title, author, date, cover_image });
+    },
+    updateBook: async (root, { id, title, author, date, cover_image}, {authScope, models: { Book } }) => {
+      await checkAuth(authScope);
+
+      const book = await Book.findByPk(id);
+
+      if (!book) {
+          throw new GraphQLError('Book not found', {
+              extensions: {
+                code: 'Not Found',
+                http: { status: 404 },
+              },
+          });
+      }
+
+      return await Book.update({ title, author, date, cover_image}, { where: { id }});
     }
   },
 

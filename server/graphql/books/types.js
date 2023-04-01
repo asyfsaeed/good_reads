@@ -21,9 +21,8 @@ const bookType = gql`
   }
 
   extend type Mutation {
-    addToLibrary(id: Int!, collection: String!): Book
     addBook(title: String!, author: String!, date: String!, cover_image: String!): Book
-    updateBook(title: String, author: String, date: String, cover_image: String, rating: Int): Book
+    updateBook(id: String!, title: String, author: String, date: String, cover_image: String, rating: Int): Book
   }
 `;
 
