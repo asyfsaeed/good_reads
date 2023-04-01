@@ -1,4 +1,4 @@
-.navbar__cont{
+.navigation__cont{
     position: fixed;
     top: 0;
     width: 98%;
@@ -16,7 +16,7 @@
     margin-right: 15px;
 }
 
-.navbar__cont > div{
+.navigation__cont > div{
     display: flex;
 }
 
@@ -78,11 +78,11 @@
     right: 30px;
 }
 
-.navbar__left{
+.navigation__left{
     justify-content: left;
 }
 
-.navbar__left img{
+.navigation__left img{
     width: 100%;
 }
 
@@ -106,12 +106,12 @@
     flex-grow: 0.9;
 }
 
-.navbar__right{
+.navigation__right{
     margin-right: 30px;
 }
 
 @media only screen and (max-width: 1180px){
-    .navbar__right{
+    .navigation__right{
         margin-right: 0px;
     }
     
