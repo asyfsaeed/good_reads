@@ -1,9 +1,4 @@
 import { useEffect, useState } from "react";
-import { EncryptStorage } from 'encrypt-storage';
-
-export const encryptStorage = new EncryptStorage('secret-key-value', {
-    storageType: 'sessionStorage',
-});
 
 const useStore = ({ KEY, initData }) => {
   const [dataRetrieved, setDataRetrieved] = useState(false);
@@ -12,7 +7,7 @@ const useStore = ({ KEY, initData }) => {
   const getDataFromAsync = async () => {
     let asyncData;
     try {
-      const dataString = await encryptStorage.getItem(KEY);
+      const dataString = await localStorage.getItem(KEY);
       asyncData = dataString && (await JSON.parse(JSON.stringify(dataString)));
       console.log("Data fetched from async", asyncData);
       if (asyncData) {
@@ -35,7 +30,7 @@ const useStore = ({ KEY, initData }) => {
       const updatedData = { ...data, ...newData };
       setData(updatedData);
       const dataString = JSON.stringify(updatedData);
-      await encryptStorage.setItem(KEY, dataString);
+      await localStorage.setItem(KEY, dataString);
       console.log("Data updated", updatedData);
     } catch (error) {
       console.error(error);
@@ -47,7 +42,7 @@ const useStore = ({ KEY, initData }) => {
       const updatedData = newData;
       setData(updatedData);
       const dataString = JSON.stringify(updatedData);
-      await encryptStorage.setItem(KEY, dataString);
+      await localStorage.setItem(KEY, dataString);
     } catch (error) {
       console.error(error);
     }
@@ -58,7 +53,7 @@ const useStore = ({ KEY, initData }) => {
       const updatedData = { ...initData };
       setData(updatedData);
       const dataString = JSON.stringify(updatedData);
-      await encryptStorage.setItem(KEY, dataString);
+      await localStorage.setItem(KEY, dataString);
       console.log("Data updated", updatedData);
     } catch (error) {
       console.error(error);
