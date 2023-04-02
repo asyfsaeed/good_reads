@@ -8,6 +8,7 @@ const bookType = gql`
     date: String
     cover_image: String
     rating: String
+    collection: String
   }
   
   type Books {
@@ -18,6 +19,7 @@ const bookType = gql`
   extend type Query {
     book(id: ID!): Book
     books: [Book!]
+    searchBooks(search: String!): [Book]
   }
 
   extend type Mutation {

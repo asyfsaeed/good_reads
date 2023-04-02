@@ -2,6 +2,9 @@
 
 const { GraphQLError } = require('graphql');
 
+const { db, Sequelize } = require('../../models');
+const Op = Sequelize.Op;
+
 const checkAuth = (authScope) => {
   if (!authScope.user) {
     throw new GraphQLError('User is not authenticated', {
@@ -19,9 +22,29 @@ const bookResolvers = {
       await checkAuth(authScope);
       return Book.findAll();
     },
-    user: async (root, { id }, { authScope, models: { Book } }) => {
+    book: async (root, { id }, { authScope, models: { Book, Library} }) => {
       await checkAuth(authScope);
-      return Book.findByPk(id)},
+
+      const foundBook = await Book.findByPk(id);
+
+      const collection = await Library.findOne({ where: { BookId: foundBook.id, UserId: authScope.user.id }, attributes: ['id', 'collection']});
+      return {
+        id: foundBook.id,
+        title: foundBook.title,
+        author: foundBook.author,
+        cover_image: foundBook.cover_image,
+        date: foundBook.date,
+        collection: collection?.collection || ''
+      }
+    },  
+    searchBooks: async (root, { search }, { authScope, models: { Book } }) => {
+      await checkAuth(authScope);
+      if (search)
+        return Book.findAll({ where: { title: { [Op.iLike]: `%${search}%` } }});
+      else {
+        return [];
+      }
+    }
   },
   Mutation: {
     addBook: async (root, { title, author, date, cover_image }, {authScope, models: { Book } }) => {

@@ -2,7 +2,7 @@ const  gql = require('graphql-tag');
 
 const libraryType = gql`
   type Subscription {
-    libraries: BookFinished
+    libraries: Library
   } 
 
   type Library {
@@ -19,7 +19,7 @@ const libraryType = gql`
 
   extend type Mutation {
     addToLibrary(book_id: Int!, collection: String!): Book
-    updateCollection(book_id: Int!, collection: String!): Book
+    updateCollection(book_id: ID!, collection: String!): Book
     markFinished(book_id: Int!, rating: String, finished: Boolean): Book
   }
 `;

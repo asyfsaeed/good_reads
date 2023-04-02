@@ -16,7 +16,7 @@ const encryptPassword = (pass) => {
 }
 
 const generateToken = (user) => {
-    return `JWT ${jwt.sign({ id: user.id, email: user.email }, jwtSecret)}`;
+    return `${jwt.sign({ id: user.id, email: user.email }, jwtSecret)}`;
 }
 
 const getUser = async (token) => {

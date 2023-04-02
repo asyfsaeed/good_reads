@@ -22,9 +22,6 @@ const fs = require("fs");
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 
-const models = require('../server/models');
-
-
 const app = express();
 
 app.use(compression());
@@ -37,7 +34,6 @@ app.get("/*", (req, res, next) => {
     return next();
   }
   const reactApp = ReactDOMServer.renderToString(React.createElement(App));
-  console.log(reactApp);
   
   const indexFile = path.resolve("build/index.html");
   fs.readFile(indexFile, "utf8", (err, data) => {

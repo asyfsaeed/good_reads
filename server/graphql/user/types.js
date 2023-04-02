@@ -5,7 +5,6 @@ const userType = gql`
     id: String
     name: String
     email: String
-    active: Boolean
   }
   
   type UserConnection {
@@ -15,6 +14,9 @@ const userType = gql`
 
   type UserAuth {
     token: String
+    id: String
+    name: String
+    email: String
   }
 
   extend type Query {

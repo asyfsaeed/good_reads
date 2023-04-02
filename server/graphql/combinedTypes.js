@@ -1,6 +1,7 @@
 const  gql = require('graphql-tag');
 const { userType } = require('./user/types');
 const { bookType } = require('./books/types');
+const { libraryType } = require('./library/types');
 
 const queryTypes = gql`
     scalar Date
@@ -19,7 +20,7 @@ const queryTypes = gql`
     }
 `;
 
-const combinedTypes = [userType, bookType, queryTypes];
+const combinedTypes = [libraryType, userType, bookType, queryTypes];
 
 module.exports = {
     combinedTypes

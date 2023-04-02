@@ -19,7 +19,7 @@ const BOOK_FINISHED = 'BOOK_FINISHED';
 
 const libraryResolvers = {
   Subscription: {
-    book_finished: {
+    libraries: {
       subscribe: () => pubsub.asyncIterator([BOOK_FINISHED]),
     },
   },
@@ -89,7 +89,14 @@ const libraryResolvers = {
         await Library.create({ BookId: book_id, UserId: authScope.user.id, collection });
       }
 
-      return book;
+      return {
+        id: book.id,
+        title: book.title,
+        author: book.author,
+        cover_image: book.cover_image,
+        date: book.date,
+        collection: collection || ''
+      }
     },
     markFinished: async (root, { book_id, rating = 5, finished }, {authScope, models: { Library, Book } }) => {
 
@@ -108,9 +115,9 @@ const libraryResolvers = {
 
       await Library.update({ rating, is_finished: finished }, { where: { BookId: book_id, UserId: authScope.user.id }});
 
-      let rating = book.rating + rating / 2;
+      let ratingUpdate = book.rating + rating / 2;
 
-      await Book.update({ rating }, { id: book_id });
+      await Book.update({ rating: ratingUpdate }, { id: book_id });
     
       return book;
     }

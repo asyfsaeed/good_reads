@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { makeStyles } from "@mui/styles";
 import Button from "@mui/material/Button";
 import styles from "./login.module.css";
-import Logo from "../../assets/header_logo-8d96d7078a3d63f9f31d92282fd67cf4.png";
 import { Footer } from "../../components/Footer/Footer"
+import { UserContext } from "../../store/userStorage";
+import { useMutation } from '@apollo/client';
+import { SIGN_IN_USER } from '../../graphql/mutations';
+import { getBaseUrl } from '../../utils/utils';
 
 const useStyles = makeStyles(() => ({
     signInButton: {
@@ -18,28 +21,55 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Login = () => {
+
+    const {
+      data: { userData },
+      setDataToStore
+    } = useContext(UserContext);
+
     const classes = useStyles();
 
-    const [email,setEmail] = useState('');
+    const [email, setEmail] = useState('');
     const [password,setPassword] = useState('');
 
+    const [signInUser] = useMutation(SIGN_IN_USER, {
+      onCompleted: (res) => {
+        setEmail("")
+        setPassword("")
+        if (res?.login?.token) {
+          setDataToStore({
+            userData: {
+              token: res?.login?.token,
+              id: res?.login?.id,
+              name: res?.login?.name,
+              email: res?.login?.email,
+            }
+          })
+          window.location.href = '/books';
+        }
+      },
+      onError: (err) => {
+        console.log('sign in error', err.message);
+        setEmail("")
+        setPassword("")
+      },
+    });
 
     const handleLogin =()=>{
-      // let payload ={
-      //   email:email2,
-      //   password:password2
-      // }
-      localStorage.setItem("isLogin", JSON.stringify(true))
-      setEmail("")
-      setPassword("")
+      let payload ={
+        email: email,
+        password: password
+      }
+
+      signInUser({ variables: payload });
     }
 
     return (
         <>
-          <div className={styles.navBar}>
+          <div className={styles.navigation}>
             <img
               className={styles.logo}
-              src={Logo}
+              src={`${getBaseUrl}/assets/header_logo-8d96d7078a3d63f9f31d92282fd67cf4.png`}
               alt="logo"
             />
           </div>

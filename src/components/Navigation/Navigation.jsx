@@ -1,13 +1,15 @@
 import React from "react";
 import styles from "./navigation.module.css";
 import { Link } from "react-router-dom";
+import { Search } from "../Search/Search";
+import { getBaseUrl } from "../../utils/utils";
 
 const Navigation = () => {
   return (
-    <div className={styles.navbar__cont}>
-      <div className={styles.navbar__left}>
+    <div className={styles.navigation__cont}>
+      <div className={styles.navigation__left}>
         <div className={styles.menu__logo}>
-          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F1a%2FGoodreads_logo.svg%2F800px-Goodreads_logo.svg.png&f=1&nofb=1" />
+          <img src={`${getBaseUrl}/assets/header_logo-8d96d7078a3d63f9f31d92282fd67cf4.png`} />
         </div>
         <div className={styles.menu}>
           <Link to="/" className={styles.menu__link}>
@@ -15,115 +17,22 @@ const Navigation = () => {
           </Link>
         </div>
         <div className={styles.menu}>
-          <Link to="/mybooks" className={styles.menu__link}>
-            My Books
+          <Link to="/books" className={styles.menu__link}>
+            View Books
           </Link>
-        </div>
-        <div className={styles.menu}>
-          <Link to="#" className={styles.menu__link}>
-            Browse <i class="fas fa-caret-down"></i>
-          </Link>
-          <div className={styles.dropdown_content}>
-            <Link to="/genres" className={styles.dropdown_link}>
-              All Genre
-            </Link>
-            <br />
-            <Link to="#" className={styles.dropdown_link}>
-              Mystery
-            </Link>
-            <br />
-            <Link to="#" className={styles.dropdown_link}>
-              Thriller
-            </Link>
-            <br />
-            <Link to="#" className={styles.dropdown_link}>
-              Comic
-            </Link>
-            <br />
-            <Link to="#" className={styles.dropdown_link}>
-              Children's
-            </Link>
-          </div>
-        </div>
-        <div className={styles.menu}>
-          <Link to="#" className={styles.menu__link}>
-            Community <i class="fas fa-caret-down"></i>
-          </Link>
-          <div className={styles.dropdown_content}>
-            <Link to="#" className={styles.dropdown_link}>
-              Discussions
-            </Link>
-            <br />
-            <Link to="/people" className={styles.dropdown_link}>
-              People
-            </Link>
-            <br />
-            <Link to="/trivia" className={styles.dropdown_link}>
-              Trivia
-            </Link>
-            <br />
-            <Link to="/quotes" className={styles.dropdown_link}>
-              Quotes
-            </Link>
-            <br />
-          </div>
         </div>
       </div>
       <div className={styles.flexgrow1}></div>
       <div>
-        {/* <Search></Search> */}
+        <Search></Search>
       </div>
       <div className={styles.flexgrow2}></div>
-      <div className={styles.navbar__right}>
+      <div className={styles.navigation__right}>
         <div className={styles.menu__icon}>
           <Link to="#">
-            <i class="fas fa-bell"></i>
-          </Link>
-        </div>
-        <div className={styles.menu__icon}>
-          <Link to="/chat">
-            <i class="fas fa-comments"></i>
-          </Link>
-        </div>
-        <div className={styles.menu__icon}>
-          <Link to="#">
-            <i class="fas fa-envelope"></i>
-          </Link>
-        </div>
-        <div className={styles.menu__icon}>
-          <Link to="/group">
-            <i class="fas fa-users"></i>
-          </Link>
-        </div>
-        <div className={styles.menu__icon}>
-          <Link to="#">
-            <i class="fas fa-user"></i>
+            <img width="50" src={`${getBaseUrl}/assets/icons/user-ic.png`}></img>
           </Link>
           <div className={styles.dropdown_content}>
-            <Link to="#" className={styles.dropdown_link}>
-              Name
-            </Link>
-            <br />
-            <Link to="#" className={styles.dropdown_link}>
-              Profile
-            </Link>
-            <br />
-            <Link to="#" className={styles.dropdown_link}>
-              Friends
-            </Link>
-            <br />
-            <Link to="#" className={styles.dropdown_link}>
-              Discussions
-            </Link>
-            <br />
-            <Link to="#" className={styles.dropdown_link}>
-              Favourites
-            </Link>
-            <br />
-            <Link to="#" className={styles.dropdown_link}>
-              Quotes
-            </Link>
-            <br />
             <Link to="#" className={styles.dropdown_link}>
               Sign Out
             </Link>
@@ -135,4 +44,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export { Navigation };

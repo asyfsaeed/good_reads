@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
 }
-.navBar
+.navigation
 {
     font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
     height: 80px;
@@ -13,7 +13,7 @@
 .logo
 {
     margin-top: 15px;
-    margin-left: 250px;
+    margin-left: 100px;
     float: left;
 }
 

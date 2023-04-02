@@ -50,6 +50,9 @@ const userResolvers = {
         }
         return {
           token: generateToken(user),
+          id: user.id,
+          name: user.name,
+          email: user.email
         };
     },
     updateUser: async (root, { id, name }, { models: { User } }) => User.update({

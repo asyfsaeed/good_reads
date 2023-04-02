@@ -1,6 +1,6 @@
 import React from 'react'
 import "./myBooks.styling.css"
-import Navigation from "../../components/Navigation/Navigation"
+import {Navigation} from "../../components/Navigation/Navigation"
 
 const MyBooks = () => {
     const [data, setData] = React.useState([]);
@@ -12,14 +12,14 @@ const MyBooks = () => {
         <>
         <Navigation></Navigation>
             <div className="cont">
-            <h2>My Books</h2>
+            <h2>View Books</h2>
             <hr className="horizontal_rule" />
             <div className="cont__flex">
                 <div className="cont__filter">
                     <p style={{ marginBottom: "10px" }}><b>Bookshelf</b></p>
                     <button value="all" className="filter_btn" onClick={e => { } }>All</button><br />
                     <button value="read" className="filter_btn" onClick={e => { } }>Read</button><br />
-                    <button value="currently_reading" className="filter_btn" onClick={e => { } }>Currently Reading</button><br />
+                    <button value="currently_reading" className="filter_btn" onClick={e => { } }>Reading</button><br />
                     <button value="want_to_read" className="filter_btn" onClick={e => { } }>Want to Read</button><br />
                     <hr className="horizontal_rule" />
                     <p style={{ marginBottom: "10px" }}><b>Sort</b></p>

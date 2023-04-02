@@ -1,4 +1,4 @@
-import { PubSub } from '@apollo/server';
+const { PubSub } = require('graphql-subscriptions');
 
 const pubsub = new PubSub();
 
