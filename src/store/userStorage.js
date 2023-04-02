@@ -1,5 +1,4 @@
 import React, { createContext } from "react";
-
 import AppStore from "./appStore";
 
 const initialData = {

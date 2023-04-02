@@ -3,7 +3,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloClient, split, HttpLink, InMemoryCache} from '@apollo/client';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import {  WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { ApolloProvider  } from '@apollo/react-hooks';
@@ -48,10 +48,7 @@ const ApolloApp = (AppComponent) => (
   </ApolloProvider>
 );
 
-if (typeof window !== 'undefined') {
-  ReactDOM.hydrate(ApolloApp(App), document.getElementById('root'));
-}
-
+render(ApolloApp(App), document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

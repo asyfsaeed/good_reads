@@ -1,9 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
 import styles from './show-book-card.module.css';
-import { useParams } from '';
+import { useParams } from 'react-router-dom';
 import {GoGraph} from 'react-icons/go'
 import StarRatings from 'react-star-ratings';
-
 import { useLazyQuery } from '@apollo/client';
 import { UserContext } from "../../store/userStorage";
 import { ReadButton } from '../../components/ReadButton/ReadButton';
