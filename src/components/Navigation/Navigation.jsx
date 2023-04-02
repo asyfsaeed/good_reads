@@ -12,7 +12,7 @@ const Navigation = () => {
           <img src={`${getBaseUrl}/assets/header_logo-8d96d7078a3d63f9f31d92282fd67cf4.png`} />
         </div>
         <div className={styles.menu}>
-          <Link to="/" className={styles.menu__link}>
+          <Link to="/home" className={styles.menu__link}>
             Home
           </Link>
         </div>

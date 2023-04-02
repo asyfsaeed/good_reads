@@ -34,8 +34,9 @@ const Login = () => {
 
     const [signInUser] = useMutation(SIGN_IN_USER, {
       onCompleted: (res) => {
-        setEmail("")
-        setPassword("")
+        console.log('herere');
+        setEmail("");
+        setPassword("");
         if (res?.login?.token) {
           setDataToStore({
             userData: {
@@ -49,6 +50,7 @@ const Login = () => {
         }
       },
       onError: (err) => {
+        console.log(err);
         console.log('sign in error', err.message);
         setEmail("")
         setPassword("")

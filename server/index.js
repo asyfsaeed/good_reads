@@ -6,6 +6,10 @@
     const bodyParser = require('body-parser');
     const http = require('http');
     const { ApolloServerPluginDrainHttpServer } = require('@apollo/server/plugin/drainHttpServer');
+
+    const { SubscriptionServer } = require('subscriptions-transport-ws');
+    const { execute, subscribe} = require('graphql');
+    const { makeExecutableSchema } = require('@graphql-tools/schema');
     
     const models = require('./models');
   
@@ -19,10 +23,22 @@
     const app = express();
     const httpServer = http.createServer(app);
 
-    const server = new ApolloServer({ 
+    const schema = makeExecutableSchema({ 
       typeDefs: combinedTypes,
       resolvers: combinedResolvers,
-      plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    });
+
+    const subscriptionServer = SubscriptionServer.create({ schema, execute, subscribe }, { server: httpServer, path: '/graphql' });
+
+    const server = new ApolloServer({ 
+      schema,
+      plugins: [ApolloServerPluginDrainHttpServer({ httpServer }), { async serverWillStart() {
+        return {
+          async drainServer() {
+            subscriptionServer.close();
+          }
+        }
+      }}],
     })
     
     await server.start();

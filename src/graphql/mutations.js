@@ -24,3 +24,11 @@ export const UPDATE_BOOK_COLLECTION = gql`
     }
 `;
 
+export const ADD_BOOK_RATING = gql`
+    mutation UpdateBookRating($book_id: ID!, $rating: String, $finished: String) {
+      markFinished(book_id: $book_id, rating: $rating, finished: $finished) {
+        id
+      }
+    }
+`;
+
