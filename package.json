@@ -50,7 +50,8 @@
     "start:ssr": "node dist/server.js",
     "dev:ssr": "webpack && node dist/server.js",
     "pretest": "cd server && NODE_ENV=test sequelize db:migrate",
-    "posttest": "cd server && NODE_ENV=test sequelize db:migrate:undo:all"
+    "posttest": "cd server && NODE_ENV=test sequelize db:migrate:undo:all",
+    "dev:server": "node server/index.js"
   },
   "eslintConfig": {
     "extends": [
