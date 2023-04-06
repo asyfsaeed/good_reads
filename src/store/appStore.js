@@ -9,7 +9,7 @@ const useStore = ({ KEY, initData }) => {
     let asyncData;
     try {
       const dataString = await encryptStorage.getItem(KEY);
-      asyncData = dataString && (await JSON.parse(JSON.stringify(dataString)));
+      asyncData = dataString && (await JSON.parse(dataString));
       console.log("Data fetched from async", asyncData);
       if (asyncData) {
         setData({
