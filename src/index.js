@@ -3,10 +3,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloClient, split, HttpLink, InMemoryCache} from '@apollo/client';
-import { render } from 'react-dom';
+import ReactDOM, { render } from 'react-dom';
 import {  WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { ApolloProvider  } from '@apollo/react-hooks';
+import { BrowserRouter } from 'react-router-dom';
 
 const generateUri = () => {
   return process.env.NODE_ENV === 'production'
@@ -42,13 +43,13 @@ const client = new ApolloClient({
 
 const ApolloApp = (AppComponent) => (
   <ApolloProvider client={client}>
-    <React.StrictMode>
+    <BrowserRouter>
       <AppComponent />
-    </React.StrictMode>
+    </BrowserRouter>
   </ApolloProvider>
 );
 
-render(ApolloApp(App), document.getElementById('root'));
+ReactDOM.hydrate(ApolloApp(App), document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

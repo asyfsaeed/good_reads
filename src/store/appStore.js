@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import { EncryptStorage } from 'encrypt-storage';
-
-export const encryptStorage = new EncryptStorage('secret-key-value', {
-    storageType: 'sessionStorage',
-});
+import  encryptStorage  from  "react-secure-storage";
 
 const useStore = ({ KEY, initData }) => {
   const [dataRetrieved, setDataRetrieved] = useState(false);

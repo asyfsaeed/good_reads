@@ -35,7 +35,7 @@ const Home = () => {
     });
 
     return (
-        <><Navigation></Navigation><div className={styles.home__cont}>
+        <div><Navigation></Navigation><div className={styles.home__cont}>
             <div className={styles.home__left}>
                 <Link to="/books">View Books</Link>
                 <hr className={styles.horizontal_rule} />
@@ -108,7 +108,7 @@ const Home = () => {
                 </div>
                 <p style={{ fontSize: "13px", color: "#8E8A81" }}>© 2023, GoodReads</p>
             </div>
-        </div></>
+        </div></div>
     )
 }
 

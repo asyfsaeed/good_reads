@@ -90,7 +90,7 @@ const MyBooks = () => {
     }
     
     return (
-        <>
+        <div>
         <Navigation></Navigation>
             <div className="cont">
             <h2>View Books</h2>
@@ -129,7 +129,7 @@ const MyBooks = () => {
                     }  
                 </div>
             </div>
-        </div></>
+        </div></div>
     )
 }
 

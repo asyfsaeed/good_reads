@@ -70,7 +70,7 @@ const ShowBookCard = () => {
         const src = cover_image === undefined ? "https://via.placeholder.com/150x220.png?text=No+image" : cover_image
 
         return (
-            <><Navigation></Navigation><div className={styles.container}>
+            <div><Navigation></Navigation><div className={styles.container}>
                 <div className={styles.left}>
                     <img src={src} alt="img"></img>
                     <ReadButton selectedBook = {selectedBook} updateCollection={updateCollection}></ReadButton>
@@ -92,7 +92,7 @@ const ShowBookCard = () => {
                         <div>{`Published ${date}`}</div>
                     </div>
                 </div>
-            </div></>
+            </div></div>
         )
     }
     return null
